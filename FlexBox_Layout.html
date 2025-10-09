@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Placement Portal — Flex Layout Demo</title>
+<style>
+
+:root {
+  --bg: #f4f7fb;
+  --panel: #ffffff;
+  --accent: #0ea5e9;
+  --muted: #6b7280;
+  --shadow: 0 6px 18px rgba(15,23,42,0.06);
+  --radius: 10px;
+}
+
+
+*{box-sizing:border-box;margin:0;padding:0}
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: #0f172a;
+  line-height: 1.5;
+}
+
+header {
+  background: #fff;
+  box-shadow: var(--shadow);
+  padding: 20px 40px;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+nav a {
+  text-decoration: none;
+  color: var(--muted);
+  margin-left: 20px;
+  font-weight: 600;
+}
+nav a:hover { color: var(--accent); }
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 60px 40px;
+}
+.hero-content {
+  flex: 1;
+  min-width: 280px;
+}
+.hero-content h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.hero-content p {
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.btn:hover { background: #0284c7; }
+
+.hero-img {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  min-width: 280px;
+}
+.hero-img img {
+  width: 300px;
+  max-width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+section {
+  padding: 40px;
+}
+h2.section-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+.drive-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.drive-card {
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  flex: 1 1 300px;
+  padding: 20px;
+}
+.drive-card h3 {
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.drive-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.drive-card .apply {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+
+.tips {
+  background: #e0f2fe;
+  border-radius: var(--radius);
+  margin-top: 40px;
+}
+.tips-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+.tip {
+  flex: 1;
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+.tip h4 {
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+footer {
+  background: #fff;
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+  margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  nav { display: none; }
+  .tips-container { flex-direction: column; }
+}
+</style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">CampusConnect</div>
+      <nav>
+        <a href="#drives">Drives</a>
+        <a href="#tips">Tips</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Campus Placement Portal</h1>
+      <p>Your one-stop platform for upcoming drives, resume tips, and interview preparation.</p>
+      <a href="#drives" class="btn">Explore Opportunities</a>
+    </div>
+    <div class="hero-img">
+    </div>
+  </section>
+
+  <section id="drives">
+    <h2 class="section-title">Upcoming Placement Drives</h2>
+    <div class="drive-container">
+      <div class="drive-card">
+        <h3>AlphaTech - Software Engineer</h3>
+        <p>Date: 10 Oct 2025 | Location: On-Campus</p>
+        <a href="#" class="apply">Apply Now</a>
+      </div>
+      <div class="drive-card">
+        <h3>FinEdge - Data Analyst</h3>
+        <p>Date: 15 Oct 2025 | Location:On-Campus</p>
+        <a href="#" class="apply">Apply Now</a>
+      </div>
+      <div class="drive-card">
+        <h3>DesignHub - UI/UX Intern</h3>
+        <p>Date: 20 Oct 2025 | Location: On-Campus</p>
+        <a href="#" class="apply">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="tips" class="tips">
+    <h2 class="section-title">Placement Tips</h2>
+    <div class="tips-container">
+      <div class="tip">
+        <h4>Resume</h4>
+        <p>Keep it concise and highlight your achievements using measurable results.</p>
+      </div>
+      <div class="tip">
+        <h4>Interview</h4>
+        <p>Prepare STAR-format answers and review your projects in detail.</p>
+      </div>
+      <div class="tip">
+        <h4>Preparation</h4>
+        <p>Practice coding, aptitude, and communication regularly.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>|© 2025 CampusConnect — Empowering Students for Success|</p>
+  </footer>
+</body>
+</html>

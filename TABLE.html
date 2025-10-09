@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>College Event Flexbox Demo</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f4f7fb;color:#0f172a;padding:20px}
+.container{max-width:900px;margin:auto}
+header{margin-bottom:14px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;font-size:13px}
+.control select,.control input,.btn{padding:6px;border:1px solid #ccc;border-radius:6px}
+.btn{background:#0ea5a4;color:#fff;cursor:pointer;border:0}
+.panel{background:#fff;padding:14px;border-radius:10px}
+.flex-demo{display:flex;flex-direction:row;justify-content:flex-start;align-items:center;gap:16px;min-height:200px}
+.card{flex:1 1 220px;background:#fff;padding:10px;border:1px solid #eee;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:6px}
+.card h3{font-size:17px}.meta{display:flex;justify-content:space-between;font-size:12px;color:#666}
+@media(max-width:720px){.flex-demo{flex-direction:column;align-items:stretch}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h2>Vishal Institute – Cultural Fest 2025</h2>
+<p style="color:#475569;font-size:13px">Flexbox demo – College Event layout</p>
+</header>
+
+<div class="controls">
+<div class="control"><label>Direction</label>
+<select id="direction"><option>row</option><option>row-reverse</option><option>column</option><option>column-reverse</option></select></div>
+<div class="control"><label>Justify</label>
+<select id="justify"><option>flex-start</option><option>center</option><option>flex-end</option><option>space-between</option><option>space-around</option><option>space-evenly</option></select></div>
+<div class="control"><label>Align</label>
+<select id="align"><option>stretch</option><option>flex-start</option><option>center</option><option>flex-end</option><option>baseline</option></select></div>
+<div class="control"><label>Gap</label>
+<input id="gap" type="range" min="0" max="60" value="16"/><span id="gapVal">16px</span></div>
+<div class="control"><label>Presets</label>
+<button class="btn" id="preset1">Row</button>
+<button class="btn" id="preset2">Column</button>
+</div>
+</div>
+
+<main class="panel">
+<div class="flex-demo" id="flexDemo">
+<article class="card">
+<div class="meta"><strong>Music Night</strong><span>7PM</span></div>
+<h3>Battle of Bands</h3>
+<p>Live performances and open-mic night for all students.</p>
+<div class="meta"><span>Auditorium</span><span>Free</span></div>
+</article>
+
+<article class="card">
+<div class="meta"><strong>Tech Talk</strong><span>3PM</span></div>
+<h3>AI & Future Careers</h3>
+<p>Panel with alumni and experts on AI, jobs & internships.</p>
+<div class="meta"><span>Room 204</span><span>Register</span></div>
+</article>
+
+<article class="card">
+<div class="meta"><strong>Art Expo</strong><span>11AM</span></div>
+<h3>Student Art & Photography</h3>
+<p>Display of creative works by our talented students.</p>
+<div class="meta"><span>Gallery</span><span>All Day</span></div>
+</article>
+</div>
+<p style="font-size:12px;color:#64748b;margin-top:8px">Try changing <code>flex-direction</code>, <code>justify-content</code>, <code>align-items</code>, and <code>gap</code> above.</p>
+</main>
+
+<footer style="font-size:12px;color:#64748b;margin-top:12px">© College Event Flexbox Demo 2025</footer>
+</div>
+
+<script>
+const d=document,g=id=>d.getElementById(id);
+const demo=g('flexDemo'),dir=g('direction'),jus=g('justify'),al=g('align'),gap=g('gap'),gapVal=g('gapVal');
+function apply(){
+ demo.style.flexDirection=dir.value;
+ demo.style.justifyContent=jus.value;
+ demo.style.alignItems=al.value;
+ demo.style.gap=gap.value+'px';
+ gapVal.textContent=gap.value+'px';
+}
+[dir,jus,al].forEach(e=>e.onchange=apply);
+gap.oninput=apply;
+g('preset1').onclick=()=>{dir.value='row';jus.value='space-between';al.value='center';gap.value=20;apply();}
+g('preset2').onclick=()=>{dir.value='column';jus.value='center';al.value='stretch';gap.value=12;apply();}
+apply();
+</script>
+</body>
+</html>
