@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Conditional Statements</title>
+
+<style>
+:root{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+body{background:#809ef8;color:#0f172a;padding:28px}
+.card{max-width:900px;margin:12px auto;padding:18px;border-radius:12px;background:#c5c7f9;box-shadow:0 6px 20px rgba(15,23,42,0.06)}
+h1{font-size:20px;margin-bottom:6px}
+.section{margin:14px 0}
+pre{background:#0b1220;color:#d7ba38;padding:12px;border-radius:8px;overflow:auto}
+button{padding:8px 12px;border-radius:8px;border:1px solid #fcfdff;background:#f9f9f9;cursor:pointer}
+.output{margin-top:10px;padding:12px;background:#65f545;border-radius:8px}
+label{display:block;margin-bottom:6px;font-weight:600}
+input[type=number]{padding:8px;border-radius:8px;border:1px solid #d1d5db;width:160px}
+
+</style>
+</head>
+<body>
+<main class="card">
+
+<h1>JavaScript Operators </h1>
+<p>JavaScript Operators are symbols that perform operations on values and variables. A demo would typically cover:.</p>
+
+<section class="section">
+<label for="numA">Enter number A</label>
+<input id="numA" type="number" value="10">
+<label for="numB" style="margin-top:8px">Enter number B</label>
+<input id="numB" type="number" value="3">
+<div style="margin-top:10px">
+<button id="runOps">Run operators</button>
+</div>
+<div id="opsOutput" class="output"></div>
+
+</section>
+<section class="section">
+<label for="checkNum">Check positive / negative</label>
+<input id="checkNum" type="number" value="-5">
+<div style="margin-top:10px">
+<button id="checkBtn">Check sign</button>
+</div>
+<div id="signOutput" class="output"></div>
+</section>
+
+
+<section class="section">
+<label for="dayInput">Choose a day number (0–6)</label>
+<input id="dayInput" type="number" min="0" max="6" value="0">
+<div style="margin-top:10px">
+<button id="showDay">Show day (switch)</button>
+</div>
+<div id="dayOutput" class="output"></div>
+</section>
+
+
+<section class="section">
+<h2>Quick reference (console & DOM are used)</h2>
+<pre>// Examples shown when you click "Run operators"
+// Uses: + - * / % (arithmetic)
+// == === (comparison)
+// && || (logical)
+// Also demonstrates positive/negative check and switch for days
+</pre>
+</section>
+
+</main>
+</html>

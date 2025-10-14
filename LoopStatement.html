@@ -1,0 +1,121 @@
+<!doctype html>
+<style>
+:root{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
+body{background:#477b9e;color:#0f172a;padding:28px}
+.card{background:rgb(169, 180, 222);border-radius:12px;padding:18px;margin-bottom:14px;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+h1{font-size:20px;margin-bottom:6px}
+pre{background:#61f57c;color:#dbeafe;padding:12px;border-radius:8px;overflow:auto}
+button{padding:8px 12px;border-radius:8px;border:1px solid #cbd5e1;background:#eef2ff;cursor:pointer}
+.controls{display:flex;gap:8px;margin-bottom:12px}
+code{background:#eef2ff;padding:2px 6px;border-radius:6px}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>JavaScript Loops — Demo</h1>
+<p>This page demonstrates <code>for</code>, <code>while</code>, <code>do...while</code>, and using <code>continue</code>and<code>break</code>. Click the buttons to run each example (they also run on load).</p>
+<div class="controls">
+<button id="runAll">Run all</button>
+<button id="clear">Clear outputs</button>
+</div>
+</div>
+
+
+<div class="card">
+<h2>1) <code>for</code> loop </h2>
+<pre id="forOutput"></pre>
+<button id="runFor">Run for loop</button>
+</div>
+
+
+<div class="card">
+<h2>2) <code>while</code> </h2>
+<pre id="whileOutput"></pre>
+<button id="runWhile">Run while loop</button>
+</div>
+
+
+<div class="card">
+<h2>3) <code>do...while</code> loop </h2>
+<pre id="doWhileOutput"></pre>
+<button id="runDoWhile">Run do-while loop</button>
+</div>
+
+
+<div class="card">
+<h2>4) <code>continue</code> and <code>break</code> </h2>
+<pre id="controlOutput"></pre>
+<button id="runControl">Run continue and break </button>
+</div>
+<script>
+}
+
+
+// 1) for loop: 1 to 10
+function runFor(){
+const out = [];
+for(let i = 1; i <= 10; i++){
+out.push(i);
+}
+appendLines(document.getElementById('forOutput'), out);
+}
+
+
+// 2) while loop: 1 to 5
+function runWhile(){
+const out = [];
+let i = 1;
+while(i <= 5){
+out.push(i);
+i++;
+}
+appendLines(document.getElementById('whileOutput'), out);
+}
+
+
+// 3) do...while loop: 1 to 3
+function runDoWhile(){
+const out = [];
+let i = 1;
+do{
+out.push(i);
+i++;
+} while(i <= 3);
+appendLines(document.getElementById('doWhileOutput'), out);
+}
+
+
+// 4) continue & break: print 1-10, skip 5, stop at 8
+function runControl(){
+const out = [];
+for(let i = 1; i <= 10; i++){
+if(i === 5) continue; // skip 5
+if(i === 8) { out.push(i); break; } // include 8 then stop
+out.push(i);
+}
+appendLines(document.getElementById('controlOutput'), out);
+}
+
+
+// clear outputs
+function clearAll(){
+['forOutput','whileOutput','doWhileOutput','controlOutput'].forEach(id=>{
+document.getElementById(id).textContent = '';
+});
+}
+
+
+// Hook up buttons
+document.getElementById('runFor').addEventListener('click', runFor);
+document.getElementById('runWhile').addEventListener('click', runWhile);
+document.getElementById('runDoWhile').addEventListener('click', runDoWhile);
+document.getElementById('runControl').addEventListener('click', runControl);
+document.getElementById('clear').addEventListener('click', clearAll);
+document.getElementById('runAll').addEventListener('click', ()=>{ runFor(); runWhile(); runDoWhile(); runControl(); });
+
+
+// Run on load
+runFor(); runWhile(); runDoWhile(); runControl();
+</script>
+</body>
+</html>
