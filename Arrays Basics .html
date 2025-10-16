@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Methods Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef4ff;
+      color: #222;
+      padding: 20px;
+    }
+    h2 {
+      color: #004aad;
+    }
+    
+    button {
+      background: #0078d4;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+    #output {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 6px;
+      background: #f1f3f5;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Array Methods Demo </h2>
+
+
+    <button onclick="usePush()">Push</button>
+    <button onclick="usePop()">Pop</button>
+    <button onclick="useShift()">Shift</button>
+    <button onclick="useUnshift()">Unshift</button>
+    <button onclick="printArray()">Print Array</button>
+
+    <div id="output"></div>
+  </div>
+
+  <script>
+   
+    let fruits = ["Apple", "Banana", "Cherry"];
+
+   
+    function display(message) {
+      document.getElementById("output").textContent = message + "\nCurrent Array: " + fruits.join(", ");
+    }
+
+   
+    function usePush() {
+      fruits.push("Mango");
+      display("Used push('Mango')");
+    }
+
+   
+    function usePop() {
+      let removed = fruits.pop();
+      display("Used pop() → Removed: " + removed);
+    }
+
+    
+    function useShift() {
+      let removed = fruits.shift();
+      display("Used shift() → Removed: " + removed);
+    }
+
+   
+    function useUnshift() {
+      fruits.unshift("Strawberry");
+      display("Used unshift('Strawberry')");
+    }
+
+    
+    function printArray() {
+      let text = "Printing all elements using for loop:\n";
+      for (let i = 0; i < fruits.length; i++) {
+        text += (i + 1) + ". " + fruits[i] + "\n";
+      }
+      display(text);
+    }
+
+
+  </script>
+
+</body>
+</html>

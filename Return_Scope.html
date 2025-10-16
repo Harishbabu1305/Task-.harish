@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Functions and Scope</title>
+</head>
+<body style="font-family: Arial; padding: 20px;">
+  <h2>JavaScript Function </h2>
+  <pre id="output"></pre>
+
+  <script>
+   
+    function add(a, b) {
+      return a + b;
+    }
+
+    
+    const multiply = function(a, b) {
+      return a * b;
+    };
+
+   
+    const subtract = (a, b) => a - b;
+
+    
+    function greet(name) {
+      return "Hello, " + name + "!";
+    }
+
+    
+    let globalVar = "I am a GLOBAL variable";
+
+    function scopeExample() {
+      let localVar = "I am a LOCAL variable";
+      console.log(globalVar);
+      console.log(localVar);  
+      return localVar;
+    }
+
+
+    let result = "";
+    result += "Add(5, 3) = " + add(5, 3) + "\n";
+    result += "Multiply(4, 2) = " + multiply(4, 2) + "\n";
+    result += "Subtract(10, 7) = " + subtract(10, 7) + "\n";
+    result += greet("Harish") + "\n\n";
+
+    result += "Global vs Local Scope:\n";
+    result += "GlobalVar: " + globalVar + "\n";
+    result += "LocalVar (inside function): " + scopeExample() + "\n";
+   
+
+    document.getElementById("output").textContent = result;
+  </script>
+</body>
