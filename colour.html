@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Text Styles</title>
+
+<style>
+/* ---------- Overall Page Styling ---------- */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f7fb;
+  color: #222;
+  margin: 20px;
+}
+
+/* ---------- Section Box ---------- */
+.section {
+  background-color: #ffffff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ---------- 1. Colors ---------- */
+.color-demo {
+  color: #0ea5a4;                /* Text color */
+  border: 3px solid #ef4444;     /* Border color */
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+/* ---------- 2. Backgrounds ---------- */
+.bg-solid {
+  background-color: #93c5fd;
+  color: #000;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.bg-image {
+  background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=700&q=60');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 40px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* ---------- 3. Fonts ---------- */
+.font-large {
+  font-family: 'Georgia', serif;
+  font-size: 24px;
+}
+
+.font-small {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: gray;
+}
+
+/* ---------- 4. Text Styles ---------- */
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
+.underline {
+  text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<h1 style="text-align:center; color:#0ea5a4;"> Style Demonstration</h1>
+
+<div class="section">
+  <h2>Text and Border Colors</h2>
+  <p class="color-demo"> teal color and  red border.</p>
+</div>
+
+<div class="section">
+  <h2> Background Colors and Images</h2>
+  <div class="bg-solid"> background color.</div>
+  <div class="bg-image"> image background.</div>
+</div>
+
+<div class="section">
+  <h2> Font Families and Sizes</h2>
+  <p class="font-large"> Georgia font.</p>
+  <p class="font-small"> Courier New font.</p>
+</div>
+
+<div class="section">
+  <h2>4. Bold, Italic, Underline</h2>
+  <p class="bold"> bold text.</p>
+  <p class="italic"> italic text.</p>
+  <p class="underline">  underlined text.</p>
+</div>
+
+</body>
+</html>
+
