@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Object </title>
+</head>
+<body>
+  <h2>JavaScript Object </h2>
+  <p id="output"></p>
+
+  <script>
+   let person = {
+      name: "Harish",
+      age: 20,
+      sayHello: function() {
+        return "Hello, my name is " + this.name + " and I am " + this.age + " years old.";
+      }
+    };
+
+    let message1 = "Name: " + person.name + "<br>Age: " + person.age;
+    person.age = 25;
+
+    let message2 = "<br><br>After modifying age:<br>Name: " + person.name + "<br>Age: " + person.age;
+
+    let message3 = "<br><br>" + person.sayHello();
+
+    document.getElementById("output").innerHTML = message1 + message2 + message3;
+  </script>
+</body>
+</html>
