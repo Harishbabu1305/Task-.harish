@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Flex Webpag</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    nav {
+      background-color: #333;
+      color: rgb(33, 158, 47);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      position: relative;
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: rgb(248, 246, 246);
+      padding: 8px 12px;
+      display: block;
+    }
+
+    nav ul li:hover {
+      background-color: #555;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #444;
+      top: 35px;
+      left: 0;
+      min-width: 150px;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      color: rgb(244, 142, 142);
+    }
+
+    li:hover .dropdown-content {
+      display: block;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+      background: #abc3f1;
+    }
+
+    section {
+      background: rgb(248, 250, 248);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      width: 80%;
+    }
+
+    footer {
+      background-color: #d31717;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .item-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-top: 15px;
+    }
+
+    .card {
+      background: #e6e6e6;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px;
+      width: 200px;
+      text-align: center;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+ 
+  <nav>
+    <h2>My Webpag</h2>
+    <ul>
+      <li><a href="#" onclick="showPage('home')">Home</a></li>
+      <li><a href="#" onclick="showPage('about')">About</a></li>
+      <li><a href="#" onclick="showPage('contact')">Contact Us</a></li>
+      <li>
+        <a href="#">More ▼</a>
+        <div class="dropdown-content">
+          <a href="#">Gallery</a>
+          <a href="#">Services</a>
+          <a href="#">Help</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="home">
+      <h1>Welcome to Home Page</h1>
+      <p>This content is dynamically generated using JavaScript Array Methods.</p>
+      <div id="arrayOutput" class="item-list"></div>
+    </section>
+
+    <section id="about" style="display:none;">
+      <h1>About Us</h1>
+      <p>We are a creative web development team passionate about learning HTML, CSS, and JavaScript!</p>
+    </section>
+
+    <section id="contact" style="display:none;">
+      <h1>Contact Us</h1>
+      <p>Email: harishwebsite.com</p>
+      <p>Phone: +91 8525026225</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 My Website</p>
+  </footer>
+
+  <script>
+    
+    function showPage(page) {
+      document.getElementById("home").style.display = "none";
+      document.getElementById("about").style.display = "none";
+      document.getElementById("contact").style.display = "none";
+      document.getElementById(page).style.display = "block";
+    }
+
+    let items = ["Laptop", "Mouse", "Keyboard", "Monitor"];
+    items.push("Headphones");   
+    items.unshift("Webcam");    
+    items.pop();               
+    items.shift();            
+    let found = items.find(item => item === "Keyboard");
+
+    const outputDiv = document.getElementById("arrayOutput");
+    outputDiv.innerHTML = items.map(i => `<div class='card'>${i}</div>`).join("");
+  </script>
+
+</body>
+</html>
