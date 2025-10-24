@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Handling Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      text-align: center;
+      padding: 30px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    #output {
+      color: blue;
+      font-size: 18px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>JavaScript</h2>
+
+  <input type="text" id="myInput" placeholder="Type something..." />
+  <p id="output">Typing value will appear here...</p>
+
+  <button id="myButton">Click Me</button>
+
+  <form id="myForm">
+    <input type="text" id="nameInput" placeholder="Enter your name" required />
+    <button type="submit">Submit Form</button>
+  </form>
+
+  <script>
+  
+    document.getElementById("myButton").onclick = function() {
+      alert("Button was clicked!");
+    };
+
+    const inputBox = document.getElementById("myInput");
+    inputBox.addEventListener("input", function() {
+      document.getElementById("output").textContent = "You typed: " + inputBox.value;
+    });
+
+    const form = document.getElementById("myForm");
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // stop page reload
+      const name = document.getElementById("nameInput").value;
+      alert("Form submitted! Name: " + name);
+    });
+
+    const button = document.getElementById("myButton");
+    button.addEventListener("mouseover", function() {
+      button.style.backgroundColor = "lightgreen";
+    });
+    button.addEventListener("mouseout", function() {
+      button.style.backgroundColor = "";
+    });
+  </script>
+
+</body>
+</html>
