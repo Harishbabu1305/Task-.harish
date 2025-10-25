@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destructuring, </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef7ff;
+      padding: 20px;
+    }
+    h1 {
+      color: #0b4f6c;
+    }
+    .output {
+      background: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+    }
+    .info {
+      font-weight: bold;
+      color: green;
+    }
+    button {
+      padding: 8px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Destructuring, Template Literals</h1>
+
+  <h2>Array Destructuring</h2>
+  <p id="arrayOutput" class="output"></p>
+
+  <h2>Object Destructuring</h2>
+  <p id="objectOutput" class="output"></p>
+
+  <h2>Change Text Content using Button</h2>
+  <p id="textChange">This text will change when you click the button.</p>
+  <button id="changeBtn">Change Text</button>
+
+  <h2> Select Elements by Class Name</h2>
+  <p class="info">I am info 1</p>
+  <p class="info">I am info 2</p>
+  <p class="info">I am info 3</p>
+
+  <h2> Function with Default Parameters</h2>
+  <p id="greetOutput" class="output"></p>
+
+  <script>
+   
+    const fruits = ["Apple", "Banana", "Cherry"];
+    const [first, second, third] = fruits;
+    document.getElementById("arrayOutput").textContent = 
+      `Fruits: ${first}, ${second}, and ${third}`;
+
+  
+    const student = { name: "Harish", age: 22, course: "B.Tech" };
+    const { name, age, course } = student;
+    document.getElementById("objectOutput").textContent =
+      `Student: ${name} is ${age} years old and studies ${course}.`;
+
+ 
+    const changeButton = document.getElementById("changeBtn");
+    changeButton.addEventListener("click", () => {
+      let message = "✅ Text successfully changed using let and const!";
+      document.getElementById("textChange").textContent = message;
+    });
+
+    const infoElements = document.getElementsByClassName("info");
+    for (let i = 0; i < infoElements.length; i++) {
+      infoElements[i].style.color = "blue";
+    }
+
+
+    function greetUser(userName = "Guest", greeting = "Welcome") {
+      return `${greeting}, ${userName}! 🎉`;
+    }
+
+    const message = greetUser("Harish"); 
+    document.getElementById("greetOutput").textContent = message;
+  </script>
+
+</body>
+</html>

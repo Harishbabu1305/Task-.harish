@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrow Functions </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      padding: 20px;
+    }
+    h1 {
+      color: #004a7c;
+    }
+    .output {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #0078d7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 15px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Arrow Functions</h1>
+
+  <h2>Concise Arrow Functions</h2>
+  <p id="arrowOutput" class="output"></p>
+
+  <h2>Simple Class with Constructor and Method</h2>
+  <p id="classOutput" class="output"></p>
+
+  <button id="showBtn">Show Example</button>
+
+  <script>
+  
+    const add = (a, b) => a + b;
+    const multiply = (a, b) => a * b;
+    const greet = name => `Hello, ${name}!`;
+
+    class Student {
+      constructor(name, course) {
+        this.name = name;
+        this.course = course;
+      }
+
+      displayInfo() {
+        return `Student Name: ${this.name}, Course: ${this.course}`;
+      }
+    }
+
+    document.getElementById("showBtn").addEventListener("click", () => {
+    
+      const sum = add(5, 10);
+      const product = multiply(4, 3);
+      const greeting = greet("Harish");
+
+      document.getElementById("arrowOutput").textContent = 
+        `Sum(5,10) = ${sum}, Product(4,3) = ${product}, Greeting = "${greeting}"`;
+
+   
+      const student1 = new Student("Harish", "B.Tech Computer Science");
+      document.getElementById("classOutput").textContent = student1.displayInfo();
+    });
+  </script>
+
+</body>
+</html>
