@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LocalStorage </title>
+</head>
+<body>
+  <h2>LocalStorage </h2>
+
+  <button id="saveLocal">Save to Local Storage</button>
+  <button id="getLocal">Get from Local Storage</button>
+  <br><br>
+
+  <button id="saveSession">Save to Session Storage</button>
+  <button id="getSession">Get from Session Storage</button>
+
+  <p id="output"></p>
+
+  <script>
+    const output = document.getElementById("output");
+
+    document.getElementById("saveLocal").addEventListener("click", () => {
+      localStorage.setItem("username", "Harish");
+      output.textContent = "✅ Saved 'Harish' to Local Storage!";
+    });
+
+    document.getElementById("getLocal").addEventListener("click", () => {
+      const name = localStorage.getItem("username");
+      if (name) {
+        output.textContent = `📦 Retrieved from Local Storage: ${name}`;
+      } else {
+        output.textContent = "⚠️ No value found in Local Storage!";
+      }
+    });
+
+    document.getElementById("saveSession").addEventListener("click", () => {
+      sessionStorage.setItem("course", "JavaScript");
+      output.textContent = "✅ Saved 'JavaScript' to Session Storage!";
+    });
+
+    document.getElementById("getSession").addEventListener("click", () => {
+      const course = sessionStorage.getItem("course");
+      if (course) {
+        output.textContent = `📦 Retrieved from Session Storage: ${course}`;
+      } else {
+        output.textContent = "⚠️ No value found in Session Storage!";
+      }
+    });
+  </script>
+</body>
+</html>
