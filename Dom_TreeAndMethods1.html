@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Manipulation Example</title>
+</head>
+<body>
+  <h2 id="heading">Original Heading</h2>
+  <p id="para">This is the original paragraph content.</p>
+  <button onclick="changeText()">Change Text and Style</button>
+
+  <script>
+    function changeText() {
+  
+      document.getElementById("heading").textContent = "Updated Heading using getElementById()";
+
+      const heading = document.getElementById("heading");
+      heading.style.color = "blue";
+      heading.style.fontSize = "28px";
+      heading.style.fontWeight = "bold";
+
+      document.getElementById("para").innerHTML = "This paragraph content has been <b>updated</b> dynamically!";
+
+      const para = document.getElementById("para");
+      para.style.color = "green";
+      para.style.fontSize = "20px";
+    }
+  </script>
+</body>
+</html>
