@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Callback, Promise, and Async/Await Example</title>
+</head>
+<body>
+  <h2>Callback, Promise, and Async/Await Demo</h2>
+  <div id="output"></div>
+
+  <script>
+    const output = document.getElementById("output");
+
+      function greetUser(name, callback) {
+      output.innerHTML += `Hello, ${name}!<br>`;
+      callback(); 
+    }
+
+    greetUser("Harish", () => {
+      output.innerHTML += "This message is from the callback function.<br><br>";
+    });
+
+    function checkMarks(marks) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => { 
+          if (marks >= 50) {
+            resolve("🎉 You passed the exam!");
+          } else {
+            reject("❌ You failed. Try again!");
+          }
+        }, 1000);
+      });
+    }
+
+    const marks = 80; 
+    checkMarks(marks)
+      .then((message) => {
+        output.innerHTML += `<strong>Promise Resolved (then):</strong> ${message}<br>`;
+      })
+      .catch((error) => {
+        output.innerHTML += `<strong>Promise Rejected (catch):</strong> ${error}<br>`;
+      });
+
+    async function handleResult() {
+      try {
+        const result = await checkMarks(45); // Try changing this value too
+        output.innerHTML += `<strong>Async/Await Success:</strong> ${result}<br>`;
+      } catch (error) {
+        output.innerHTML += `<strong>Async/Await Error:</strong> ${error}<br>`;
+      }
+    }
+
+    handleResult();
+  </script>
+</body>
+</html>
