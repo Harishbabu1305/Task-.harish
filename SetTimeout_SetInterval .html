@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Synchronous vs Asynchronous Example</title>
+</head>
+<body>
+  <h2>Synchronous vs Asynchronous JavaScript</h2>
+
+  <div id="output"></div>
+
+  <script>
+    const output = document.getElementById("output");
+
+    output.innerHTML += "<b>Synchronous Execution:</b><br>";
+    console.log("Start Synchronous Task");
+    output.innerHTML += "Task 1<br>";
+    output.innerHTML += "Task 2<br>";
+    output.innerHTML += "Task 3<br>";
+    console.log("End Synchronous Task");
+
+    output.innerHTML += "<br><b>Asynchronous Execution:</b><br>";
+
+    setTimeout(() => {
+      output.innerHTML += "Message after 2 seconds<br>";
+      console.log("Message after 2 seconds");
+    }, 2000);
+
+    let counter = 1;
+    const counterInterval = setInterval(() => {
+      output.innerHTML += `Counter: ${counter}<br>`;
+      console.log("Counter:", counter);
+      counter++;
+
+      if (counter > 5) {
+        clearInterval(counterInterval);
+        output.innerHTML += "<b>Counter stopped!</b><br>";
+      }
+    }, 1000);
+
+    output.innerHTML += "This message appears immediately (asynchronous demo)<br>";
+  </script>
+</body>
+</html>
