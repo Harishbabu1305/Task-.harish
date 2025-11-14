@@ -8,3 +8,13 @@ CREATE TABLE employees (
 );
 ALTER TABLE employees
 ADD CONSTRAINT unique_email UNIQUE (email);
+use studentdb;
+CREATE TABLE  employees (
+    id INT,
+    name VARCHAR(100),
+    price INT
+);
+ALTER TABLE  employees
+ADD stock INT;
+ALTER TABLE  employees
+RENAME COLUMN price TO unit_price;
