@@ -1,53 +1,55 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+
+export default function App() {
+
+const [controlledValue, setControlledValue] = useState("");
+
+const uncontrolledRef = useRef(null);
 
 
-const Button = ({ label, onClick, style }) => {
-  return (
-    <button onClick={onClick} style={style}>
-      {label}
-    </button>
-  );
+const handleSubmit = (e) => {
+e.preventDefault();
+alert(
+"Controlled Value: " +
+controlledValue +
+" | Uncontrolled Value: " +
+uncontrolledRef.current.value
+);
 };
+return (
+<div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 p-6 animate-fade-in">
+<div className="bg-white/80 backdrop-blur-md shadow-2xl transform hover:scale-[1.02] transition duration-300 rounded-2xl p-8 w-full max-w-lg">
+<h1 className="text-3xl tracking-wide font-bold mb-6 text-center">Controlled & Uncontrolled Components</h1>
+<form onSubmit={handleSubmit} className="space-y-6">
+{}
+<div>
+<label className="block mb-2 font-medium">Controlled Input</label>
+<input
+type="text"
+value={controlledValue}
+onChange={(e) => setControlledValue(e.target.value)}
+className="w-full p-3 border rounded-xl focus:outline-none shadow bg-gray-50 hover:bg-white transition ring-2 ring-transparent focus:ring-blue-400"
+placeholder="Type here..."/>
+</div>
+{}
+<div>
+<label className="block mb-2 font-medium">Uncontrolled Input</label>
+<input
+type="text"
+ref={uncontrolledRef}
+className="w-full p-3 border rounded-xl focus:outline-none shadow"
+placeholder="Type here..."/>
+</div>
 
-const Header = ({ title }) => {
-  return (
-    <header style={{ backgroundColor: "#4CAF50", padding: "10px", color: "white" }}>
-      <h1>{title}</h1>
-    </header>
-  );
-};
 
-const Footer = ({ text }) => {
-  return (
-    <footer style={{ backgroundColor: "#222", padding: "10px", color: "white", marginTop: "20px" }}>
-      <p>{text}</p>
-    </footer>
-  );
-};
-
-
-function App() {
-  const handleClick = () => {
-    alert("Button clicked!");
-  };
-
-  return (
-    <div>
-      <Header title="Welcome to My App" />
-
-      <main style={{ padding: "20px" }}>
-        <h2>Hello User!</h2>
-        <Button 
-          label="Click Me" 
-          onClick={handleClick} 
-          style={{ padding: "10px 20px", backgroundColor: "#008CBA", color: "white", border: "none" }} 
-        />
-      </main>
-
-      <Footer text="© 2025 My App. All rights reserved." />
-    </div>
-  );
+<button
+type="submit"
+className="w-full p-3 bg-blue-600 text-white rounded-2xl shadow-xl hover:bg-blue-700 transition transform hover:scale-105"
+>
+Submit
+</button>
+</form>
+</div>
+</div>
+);
 }
-
-export default App;
-💡 You can now copy this int
