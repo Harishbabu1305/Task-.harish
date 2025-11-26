@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lists and Tables Practice</title>
+     <style>
+        table {
+            border-collapse: separate;
+            border-spacing: 8px; 
+            width: 60%;
+        }
+        th, td {
+            border: 2px solid black;
+            padding: 10px; 
+        }
+        th {
+            background-color: lightgray;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Unordered & Ordered Lists</h1>
+    <h2>Difference:</h2>
+    <ul>
+        <li><b>&lt;ul&gt;</b> → Unordered List (bullets)</li>
+        <li><b>&lt;ol&gt;</b> → Ordered List (numbers/letters)</li>
+    </ul>
+    <hr>
+    <h2>Shopping List (Unordered List)</h2>
+    <ul>
+        <li>Milk</li>
+        <li>Bread</li>
+        <li>Vegetables</li>
+        <li>Snacks</li>
+    </ul>
+    <h2>Steps to Make Tea (Ordered List)</h2>
+    <ol>
+        <li>Boil water</li>
+        <li>Add tea powder</li>
+        <li>Add milk</li>
+        <li>Filter tea</li>
+        <li>Serve hot</li>
+    </ol>
+    <hr>
+    <h2>Nested List Example</h2>
+    <ul>
+        <li>Fruits
+            <ul>
+                <li>Apple</li>
+                <li>Mango</li>
+                <li>Banana</li>
+            </ul>
+        </li>
+    <li>Vegetables
+            <ol>
+                <li>Carrot</li>
+                <li>Potato</li>
+                <li>Tomato</li>
+            </ol>
+        </li>
+    </ul>
+
+    <hr>
+
+    <h1>Tables in HTML</h1>
+    <h2>Difference Between &lt;th&gt; and &lt;td&gt;</h2>
+    <ul>
+        <li><b>&lt;th&gt;</b> → Header cell (bold + centered by default)</li>
+        <li><b>&lt;td&gt;</b> → Normal data cell</li>
+    </ul>
+    <h2>Simple Table</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>Apple</td>
+            <td>10</td>
+            <td>$5</td>
+        </tr>
+        <tr>
+            <td>Milk</td>
+            <td>2</td>
+            <td>$3</td>
+        </tr>
+    </table>
+     <hr>
+     <h2>Table with Colspan & Rowspan</h2>
+    <table>
+        <tr>
+            <th colspan="2">Product</th>
+            <th rowspan="2">Price</th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+        </tr>
+        <tr>
+            <td>Rice</td>
+            <td>5 kg</td>
+            <td>$8</td>
+        </tr>
+        <tr>
+            <td>Sugar</td>
+            <td>2 kg</td>
+            <td>$4</td>
+        </tr>
+    </table>
+
+</body>
+</html>
