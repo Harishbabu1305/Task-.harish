@@ -4,264 +4,105 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Consoleoop
+namespace Arrays___Boxing___UnBoxing
 {
     internal class Program
     {
         static void Main(string[] args)
         {
             //1
-            Console.WriteLine("Print the no series");
-            for (int i=1;i<=10;i++)
             {
-               Console.Write(i + " ");
+                int rows = 5;
 
+                for (int i = 1; i <= rows; i++)
+                {
+                    for (int space = 1; space <= rows - i; space++)
+                        Console.Write(" ");
+
+                    for (int star = 1; star <= (2 * i - 1); star++)
+                        Console.Write("*");
+
+                    Console.WriteLine();
+                }
             }
-            Console.WriteLine("\n");
+
             //2
-
-            Console.WriteLine("Print the Odd no series");
-            for (int i=1;i<= 10; i+=2)
             {
-                Console.Write(i+" ");
+                int a = 10, b = 20;
+
+                a = a + b;
+                b = a - b;
+                a = a - b;
+
+                Console.WriteLine("After Swap:");
+                Console.WriteLine("a = " + a);
+                Console.WriteLine("b = " + b);
             }
-            Console.WriteLine("\n");
+
             //3
-
-            Console.WriteLine("Print the even no series");
-            for (int i = 0; i <= 10; i += 2)
             {
-                Console.Write(i + " ");
+                int[] arr = { 10, 45, 2, 89, 34 };
+
+                int min = arr[0];
+                int max = arr[0];
+
+                for (int i = 1; i < arr.Length; i++)
+                {
+                    if (arr[i] < min)
+                        min = arr[i];
+                    if (arr[i] > max)
+                        max = arr[i];
+                }
+
+                Console.WriteLine("Minimum = " + min);
+                Console.WriteLine("Maximum = " + max);
             }
-            Console.WriteLine("\n");
+
             //4
-
-            Console.WriteLine("Print the no series");
-            for (int i = 0; i <= 25; i += 5)
             {
-                Console.Write(i + " ");
-            }
-            Console.WriteLine("\n");
-            //5
+                int[] arr = { 1, 2, 3, 2, 4, 1, 5, 1 };
+                int count = 0;
 
-
-            Console.WriteLine("Print the no series");
-            for (int i = 1; i <= 10; i++)
-            {
-                if (i<10)
-                Console.Write(i + "+");
-                else
-                Console.Write(i);
-            }
-            Console.WriteLine();
-            Console.WriteLine("\n");
-            //6
-
-            Console.WriteLine("Print the Odd no series");
-            for (int i = 0; i <= 10; i += 2)
-            {
-                if(i<10)
-                Console.Write(i + "+");
-                else 
-                    Console.Write(i);
-            }
-            Console.WriteLine();
-            Console.WriteLine("\n");
-            //7
-
-            Console.WriteLine("Print the even no series");
-            for (int i = 1; i <= 10; i += 2)
-            {
-                if (i < 9)
-                    Console.Write(i + "+");
-                else
-                    Console.Write(i);
-            }
-            Console.WriteLine();
-            Console.WriteLine("\n");
-            //8
-
-            Console.WriteLine("Print the series");
-            for (int i = 0; i <= 30; i += 5)
-            {
-                if (i < 30)
-                    Console.Write(i + "+");
-                else
-                    Console.Write(i);
-            }
-            Console.WriteLine();
-            Console.WriteLine("\n");
-            //9
-
-            Console.WriteLine("Print the series");
-            for (int i = 1; i <= 10; i ++)
-            {
-                if (i < 10)
-                    Console.Write(i +"/"+ i +"!" +"+");
-                else
-                    Console.Write(i+"/"+i);
-                 
-            }
-            Console.WriteLine();
-            Console.WriteLine("\n");
-            //10
-
-            Console.WriteLine("Print the even no series");
-            for (int i = 0; i <= 10; i+=2)
-            {
-                if (i < 10)
-                    Console.Write(i + "/" + i + "!" + "+" );
-                else
-                    Console.Write(i + "/" + i );
-            }
-            Console.WriteLine();
-            Console.WriteLine("\n");
-            //11
-
-            Console.WriteLine("Print the odd no series");
-            for (int i = 1; i <= 9; i += 2)
-            {
-                if (i < 9)
-                    Console.Write(i + "/" + i + "!" + "+");
-                else
-                     Console.Write(i + "/" + i );
-            }
-            Console.WriteLine();
-            Console.WriteLine("\n");
-
-            //12         
-            Console.WriteLine();
-            int n = int.Parse(Console.ReadLine());
-            int f = 1;   
-            for (int i = 5; i <= 1; i--)   
-            {
-                f *= i;
-            }
-            Console.WriteLine($"Factorial of 5 = {f}");
-
-            //13        
-            Console.WriteLine();
-            int n = int.Parse(Console.ReadLine());
-            int ctr = 0;
-            for(int i=1;i<=n;i++)
-            {
-                if (n % i == 0) 
-                    ctr++;  
-            }
-            if(ctr==2)
-                Console.WriteLine($"The given no {n} is prime no");
-            else
-                Console.WriteLine($"The given no {n} is not prime no");
-
-            //14
-            Console.WriteLine();
-            int a = int.Parse(Console.ReadLine());
-            int b = int.Parse(Console.ReadLine());
-
-            for (int n = a; n <= b; n++)
-            {
-                int ctr = 0;
-                for (int i = 1; i <= n; i++)
+                for (int i = 0; i < arr.Length; i++)
                 {
-                    if (n % i == 0)
-                        ctr++;
-                }
-                if (ctr == 2)
-                    Console.WriteLine(n);
-            }
+                    for (int j = i + 1; j < arr.Length; j++)
+                    {
+                        if (arr[i] == arr[j])
+                        {
+                            count++;
+                            break;
+                        }
+                    }
 
-            //15
-            Console.WriteLine("Enter a number");
-            int n = int.Parse(Console.ReadLine());
+                    //5
+                    {
+                        int[] arr1 = { 1, 3, 5, 7 };
+                        int[] arr2 = { 2, 4, 6, 8 };
 
-            int temp = n;
-            int sum = 0;
+                        int[] merged = new int[arr1.Length + arr2.Length];
 
-            while (temp > 0)
-            {
-                int d = temp % 10;
-                sum = sum + d * d * d;
-                temp = temp / 10;
-            }
+                        int i = 0, j = 0, k = 0;
 
-            if (sum == n)
-                Console.WriteLine("Armstrong Number");
-            else
-                Console.WriteLine("Not Armstrong Number");
+                        while (i < arr1.Length && j < arr2.Length)
+                        {
+                            if (arr1[i] < arr2[j])
+                                merged[k++] = arr1[i++];
+                            else
+                                merged[k++] = arr2[j++];
+                        }
 
-            //16
-            Console.WriteLine("Enter limit");
-            int limit = int.Parse(Console.ReadLine());
+                        while (i < arr1.Length)
+                            merged[k++] = arr1[i++];
 
-            for (int n = 1; n <= limit; n++)
-            {
-                int temp = n;
-                int sum = 0;
+                        while (j < arr2.Length)
+                            merged[k++] = arr2[j++];
 
-                while (temp > 0)
-                {
-                    int d = temp % 10;
-                    sum = sum + d * d * d;
-                    temp = temp / 10;
-                }
+                        Console.WriteLine("Merged Array:");
+                        foreach (int num in merged)
+                            Console.Write(num + " ");
+                    }
 
-                if (sum == n)
-                    Console.WriteLine(n);
-            }
 
-            //17
-            Console.WriteLine("Enter number of terms");
-            int n = int.Parse(Console.ReadLine());
 
-            int a = 0, b = 1, c;
-
-            for (int i = 1; i <= n; i++)
-            {
-                Console.Write(a + " ");
-                c = a + b;
-                a = b;
-                b = c;
-            }
-            //18
-            for (int i = 1; i <= 10; i++)
-            {
-                Console.WriteLine(i + " x 5 = " + (i * 5));
-            }
-            //19
-            Console.WriteLine("Enter a number");
-            int n = int.Parse(Console.ReadLine());
-
-            int sum = 0;
-            while (n > 0)
-            {
-                sum = sum + (n % 10);
-                n = n / 10;
-            }
-            Console.WriteLine("Sum of digits = " + sum);
-
-            //20
-            Console.WriteLine("Enter a string");
-            string str = Console.ReadLine();
-
-            int len = str.Length;
-            int flag = 0;
-
-            for (int i = 0; i < len / 2; i++)
-            {
-                if (str[i] != str[len - i - 1])
-                {
-                    flag = 1;
-                    break;
                 }
             }
-
-            if (flag == 0)
-                Console.WriteLine("Palindrome");
-            else
-                Console.WriteLine("Not Palindrome");
-
-
-        }
-
-    }
-}
