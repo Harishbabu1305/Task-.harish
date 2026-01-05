@@ -4,105 +4,88 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Arrays___Boxing___UnBoxing
+namespace @class
 {
     internal class Program
     {
-        static void Main(string[] args)
+       
+    //1
+
+class Employee
         {
-            //1
+            public int empId;
+            public string empName;
+            public double salary;
+
+
+            public void GetData(int id, string name, double sal)
             {
-                int rows = 5;
-
-                for (int i = 1; i <= rows; i++)
-                {
-                    for (int space = 1; space <= rows - i; space++)
-                        Console.Write(" ");
-
-                    for (int star = 1; star <= (2 * i - 1); star++)
-                        Console.Write("*");
-
-                    Console.WriteLine();
-                }
+                empId = id;
+                empName = name;
+                salary = sal;
             }
 
-            //2
+ 
+            public void Display()
             {
-                int a = 10, b = 20;
+                Console.WriteLine("Employee ID   : " + empId);
+                Console.WriteLine("Employee Name : " + empName);
+                Console.WriteLine("Salary        : " + salary);
+            }
+        }
 
-                a = a + b;
-                b = a - b;
-                a = a - b;
+        
+            static void Main()
+            {
+                Employee emp = new Employee();
+                emp.GetData(101, "Ravi", 25000);
+                emp.Display();
+            }
+        }
+        //2
 
-                Console.WriteLine("After Swap:");
-                Console.WriteLine("a = " + a);
-                Console.WriteLine("b = " + b);
+
+        class Sample
+        {
+            int x = 10;
+
+            void Show()
+            {
+                Console.WriteLine("Value of x: " + x);
             }
 
-            //3
+            public void Display()
             {
-                int[] arr = { 10, 45, 2, 89, 34 };
-
-                int min = arr[0];
-                int max = arr[0];
-
-                for (int i = 1; i < arr.Length; i++)
-                {
-                    if (arr[i] < min)
-                        min = arr[i];
-                    if (arr[i] > max)
-                        max = arr[i];
-                }
-
-                Console.WriteLine("Minimum = " + min);
-                Console.WriteLine("Maximum = " + max);
+                Show();
             }
 
-            //4
+            static void Main()
             {
-                int[] arr = { 1, 2, 3, 2, 4, 1, 5, 1 };
-                int count = 0;
-
-                for (int i = 0; i < arr.Length; i++)
-                {
-                    for (int j = i + 1; j < arr.Length; j++)
-                    {
-                        if (arr[i] == arr[j])
-                        {
-                            count++;
-                            break;
-                        }
-                    }
-
-                    //5
-                    {
-                        int[] arr1 = { 1, 3, 5, 7 };
-                        int[] arr2 = { 2, 4, 6, 8 };
-
-                        int[] merged = new int[arr1.Length + arr2.Length];
-
-                        int i = 0, j = 0, k = 0;
-
-                        while (i < arr1.Length && j < arr2.Length)
-                        {
-                            if (arr1[i] < arr2[j])
-                                merged[k++] = arr1[i++];
-                            else
-                                merged[k++] = arr2[j++];
-                        }
-
-                        while (i < arr1.Length)
-                            merged[k++] = arr1[i++];
-
-                        while (j < arr2.Length)
-                            merged[k++] = arr2[j++];
-
-                        Console.WriteLine("Merged Array:");
-                        foreach (int num in merged)
-                            Console.Write(num + " ");
-                    }
-
-
-
-                }
+                Sample s = new Sample();
+                s.Display();
             }
+        }
+        //3
+
+class Sample1
+    {
+
+        public int a = 50;
+
+        public void Show()
+        {
+            Console.WriteLine("Value of a: " + a);
+        }
+    }
+
+    class Sample2
+    {
+        static void Main()
+        {
+            Sample1 obj = new Sample1();  
+            Console.WriteLine(obj.a);     
+            obj.Show();                   
+        }
+    }
+    }
+
