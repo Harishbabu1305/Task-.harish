@@ -1,212 +1,129 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace loop
+namespace Access_Specifiers_1
 {
-    internal class Program
+    using System;
+
+    namespace OOPS_Demo
     {
-        static void Main(string[] args)
+        // 1
+        static class StaticDemo
         {
-            class Employee
-        {
-            public int empId;
-            public string empName;
-            public double salary;
-
-            public void Input()
+            public static void Show()
             {
-                Console.Write("Enter Emp ID: ");
-                empId = int.Parse(Console.ReadLine());
-
-                Console.Write("Enter Name: ");
-                empName = Console.ReadLine();
-
-                Console.Write("Enter Salary: ");
-                salary = double.Parse(Console.ReadLine());
-            }
-
-            public void Display()
-            {
-                Console.WriteLine("Emp ID : " + empId);
-                Console.WriteLine("Name   : " + empName);
-                Console.WriteLine("Salary : " + salary);
+                Console.WriteLine("Static Class Method");
             }
         }
 
-        //  2.
-        class Vehicle
-        {
-            public string vehicleType;
-        }
-
-        class Car : Vehicle
-        {
-            public string brand;
-        }
-
-        class SportsCar : Car
-        {
-            public int speed;
-
-            public void Display()
-            {
-                Console.WriteLine("Vehicle Type : " + vehicleType);
-                Console.WriteLine("Brand        : " + brand);
-                Console.WriteLine("Speed        : " + speed);
-            }
-        }
-
-        //  3. 
-        class Shape1
+        // 2. 
+        sealed class SealedDemo
         {
             public void Display()
             {
-                Console.WriteLine("This is a Shape");
+                Console.WriteLine("Sealed Class Method");
             }
         }
 
-        class Rectangle : Shape1
+        // 3.
+        abstract class AbstractDemo
         {
-            public int length;
-            public int breadth;
+            public abstract void Draw();
 
-            public void Area()
+            public void Info()
             {
-                Console.WriteLine("Area of Rectangle = " + (length * breadth));
+                Console.WriteLine("Abstract Class Normal Method");
             }
         }
 
-        //  4. 
-        class Account
+        class Circle : AbstractDemo
         {
-            public int accountNo;
+            public override void Draw()
+            {
+                Console.WriteLine("Drawing Circle");
+            }
         }
 
-        class SavingsAccount : Account
+        // 4.
+        class Parent
         {
-            public double balance;
+            public virtual void Show()
+            {
+                Console.WriteLine("Parent Class Show Method");
+            }
+        }
+
+        class Child : Parent
+        {
+            public override void Show()
+            {
+                Console.WriteLine("Child Class Overridden Method");
+            }
+        }
+
+        // 5
+        class AccessDemo
+        {
+            private int a = 10;
+            public int b = 20;
+            protected int c = 30;
+            internal int d = 40;
+            protected internal int e = 50;
 
             public void Display()
             {
-                Console.WriteLine("Account No : " + accountNo);
-                Console.WriteLine("Balance    : " + balance);
+                Console.WriteLine("Private: " + a);
+                Console.WriteLine("Public: " + b);
+                Console.WriteLine("Protected: " + c);
+                Console.WriteLine("Internal: " + d);
+                Console.WriteLine("Protected Internal: " + e);
             }
         }
 
-        //  5. 
-        class Device
+        class AccessChild : AccessDemo
         {
-            public string deviceName;
-        }
-
-        class Mobile : Device
-        {
-            public string model;
-        }
-
-        class SmartPhone : Mobile
-        {
-            public string os;
-
-            public void Display()
+            public void Show()
             {
-                Console.WriteLine("Device Name : " + deviceName);
-                Console.WriteLine("Model       : " + model);
-                Console.WriteLine("OS          : " + os);
+           
+                Console.WriteLine("Public: " + b);
+                Console.WriteLine("Protected: " + c);
+                Console.WriteLine("Internal: " + d);
+                Console.WriteLine("Protected Internal: " + e);
             }
         }
 
-        // 6. 
-        class Area
-        {
-            public void CalculateArea(int side)
-            {
-                Console.WriteLine("Area of Square = " + (side * side));
-            }
-
-            public void CalculateArea(int l, int b)
-            {
-                Console.WriteLine("Area of Rectangle = " + (l * b));
-            }
-
-            public void CalculateArea(double r)
-            {
-                Console.WriteLine("Area of Circle = " + (3.14 * r * r));
-            }
-        }
-
-        //  7. 
-        class Shape
-        {
-            public void Draw()
-            {
-                Console.WriteLine("Drawing a Circle");
-            }
-
-            public void Draw(int a)
-            {
-                Console.WriteLine("Drawing a Rectangle");
-            }
-
-            public void Draw(double a)
-            {
-                Console.WriteLine("Drawing a Triangle");
-            }
-        }
-
-        //  MAIN 
         class Program
         {
-            static void Main()
+            static void Main(string[] args)
             {
-                Console.WriteLine("---- 1. Employee ----");
-                Employee e = new Employee();
-                e.Input();
-                e.Display();
+                Console.WriteLine("---- Static Class ----");
+                StaticDemo.Show();
 
-                Console.WriteLine("\n---- 2. SportsCar ----");
-                SportsCar sc = new SportsCar();
-                sc.vehicleType = "Four Wheeler";
-                sc.brand = "BMW";
-                sc.speed = 300;
-                sc.Display();
+                Console.WriteLine("\n---- Sealed Class ----");
+                SealedDemo sd = new SealedDemo();
+                sd.Display();
 
-                Console.WriteLine("\n---- 3. Rectangle ----");
-                Rectangle r = new Rectangle();
-                r.length = 10;
-                r.breadth = 5;
-                r.Display();
-                r.Area();
+                Console.WriteLine("\n---- Abstract Class ----");
+                AbstractDemo ad = new Circle();
+                ad.Info();
+                ad.Draw();
 
-                Console.WriteLine("\n---- 4. Savings Account ----");
-                SavingsAccount sa = new SavingsAccount();
-                sa.accountNo = 12345;
-                sa.balance = 50000;
-                sa.Display();
+                Console.WriteLine("\n---- Virtual / Override ----");
+                Parent p = new Child();
+                p.Show();
 
-                Console.WriteLine("\n---- 5. SmartPhone ----");
-                SmartPhone sp = new SmartPhone();
-                sp.deviceName = "Mobile";
-                sp.model = "Samsung";
-                sp.os = "Android";
-                sp.Display();
+                Console.WriteLine("\n---- Access Specifiers ----");
+                AccessChild ac = new AccessChild();
+                ac.Show();
 
-                Console.WriteLine("\n---- 6. Area Overloading ----");
-                Area a = new Area();
-                a.CalculateArea(5);
-                a.CalculateArea(4, 6);
-                a.CalculateArea(3.5);
-
-                Console.WriteLine("\n---- 7. Draw Overloading ----");
-                Shape s = new Shape();
-                s.Draw();
-                s.Draw(10);
-                s.Draw(5.5);
+                Console.ReadLine();
             }
         }
     }
-    }
+
+
 }
+
