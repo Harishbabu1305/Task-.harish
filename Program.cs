@@ -1,151 +1,157 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace namespaces
+namespace Exception_handling___Interface
 {
-   
-    
-        using System;
+    internal static class Program
+    {using System;
 
-
-//TASK 1
-namespace MyUtilities
+// 1
+class Vehicle
     {
-        class MathHelper
+        public string Brand;
+        public int Speed;
+
+       
+        public Vehicle()
         {
-            public int Add(int a, int b)
-            {
-                return a + b;
-            }
+            Brand = "Unknown";
+            Speed = 0;
+        }
+
+        public Vehicle(string brand)
+        {
+            Brand = brand;
+            Speed = 0;
+        }
+
+        public Vehicle(string brand, int speed)
+        {
+            Brand = brand;
+            Speed = speed;
+        }
+
+        public void Start()
+        {
+            Console.WriteLine("Vehicle is starting...");
+        }
+
+        public void Display()
+        {
+            Console.WriteLine($"Brand: {Brand}, Speed: {Speed}");
         }
     }
 
-   //TASK 4 
-    class NegativeNumberException : Exception
+    class Car : Vehicle
     {
-        public NegativeNumberException(string message) : base(message)
+        public int Doors;
+
+        public Car(string brand, int speed, int doors) : base(brand, speed)
         {
+            Doors = doors;
+        }
+
+        public void CarDetails()
+        {
+            Console.WriteLine($"Car Brand: {Brand}, Speed: {Speed}, Doors: {Doors}");
         }
     }
 
-    // TASK 5 
-    namespace StudentData
+    class Bike : Vehicle
     {
-        class StudentFileHandler
+        public bool HasGear;
+
+        public Bike(string brand, int speed, bool hasGear) : base(brand, speed)
         {
-            string filePath = "students.txt";
+            HasGear = hasGear;
+        }
 
-            public void WriteStudents(string[] students)
-            {
-                try
-                {
-                    using (FileStream fs = new FileStream(filePath, FileMode.Create))
-                    using (StreamWriter sw = new StreamWriter(fs))
-                    {
-                        foreach (string student in students)
-                        {
-                            sw.WriteLine(student);
-                        }
-                    }
-                }
-                catch (UnauthorizedAccessException)
-                {
-                    Console.WriteLine("Access denied while writing student file.");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error: " + ex.Message);
-                }
-            }
-
-            public void ReadStudents()
-            {
-                try
-                {
-                    using (FileStream fs = new FileStream(filePath, FileMode.Open))
-                    using (StreamReader sr = new StreamReader(fs))
-                    {
-                        string line;
-                        Console.WriteLine("Student Names:");
-                        while ((line = sr.ReadLine()) != null)
-                        {
-                            Console.WriteLine(line);
-                        }
-                    }
-                }
-                catch (FileNotFoundException)
-                {
-                    Console.WriteLine("Student file not found.");
-                }
-                catch (UnauthorizedAccessException)
-                {
-                    Console.WriteLine("Access denied while reading student file.");
-                }
-            }
+        public void BikeDetails()
+        {
+            Console.WriteLine($"Bike Brand: {Brand}, Speed: {Speed}, Has Gear: {HasGear}");
         }
     }
 
+    //2 
+    class Payment
+    {
+        public virtual void MakePayment()
+        {
+            Console.WriteLine("Processing payment...");
+        }
+    }
+
+    class CreditCard : Payment
+    {
+        public override void MakePayment()
+        {
+            Console.WriteLine("Payment made using Credit Card");
+        }
+    }
+
+    class NetBanking : Payment
+    {
+        public override void MakePayment()
+        {
+            Console.WriteLine("Payment made using Net Banking");
+        }
+    }
+
+    class UPI : Payment
+    {
+        public override void MakePayment()
+        {
+            Console.WriteLine("Payment made using UPI");
+        }
+    }
+
+    // 3
+    class PaymentOverload
+    {
+        public void MakePayment(int amount)
+        {
+            Console.WriteLine("Paid ₹" + amount + " in cash");
+        }
+
+        public void MakePayment(int amount, string mode)
+        {
+            Console.WriteLine("Paid ₹" + amount + " using " + mode);
+        }
+    }
+
+    // 4
     class Program
     {
         static void Main()
         {
-            // TASK 1 
-            MyUtilities.MathHelper math = new MyUtilities.MathHelper();
-            Console.WriteLine("Addition Result: " + math.Add(10, 20));
+            Console.WriteLine("---- Inheritance & Constructor Overloading ----");
+            Car car = new Car("Toyota", 180, 4);
+            car.Start();
+            car.CarDetails();
 
-            //  TASK 2
-            string fileName = "message.txt";
-            using (FileStream fs = new FileStream(fileName, FileMode.Create))
-            using (StreamWriter sw = new StreamWriter(fs))
-            {
-                sw.WriteLine("Hello C# Streams");
-            }
+            Bike bike = new Bike("Yamaha", 120, true);
+            bike.Start();
+            bike.BikeDetails();
 
-            //  TASK 3 
-            try
-            {
-                using (FileStream fs = new FileStream(fileName, FileMode.Open))
-                using (StreamReader sr = new StreamReader(fs))
-                {
-                    Console.WriteLine("File Content:");
-                    Console.WriteLine(sr.ReadToEnd());
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine("File does not exist.");
-            }
+            Console.WriteLine("\n---- Polymorphism (Overriding) ----");
+            Payment p;
 
-            // TASK 4 
-            try
-            {
-                Console.Write("Enter a number: ");
-                int num = int.Parse(Console.ReadLine());
+            p = new CreditCard();
+            p.MakePayment();
 
-                if (num < 0)
-                    throw new NegativeNumberException("Negative numbers are not allowed.");
+            p = new NetBanking();
+            p.MakePayment();
 
-                Console.WriteLine("You entered: " + num);
-            }
-            catch (NegativeNumberException ex)
-            {
-                Console.WriteLine("Custom Error: " + ex.Message);
-            }
+            p = new UPI();
+            p.MakePayment();
 
-            //  TASK 5
-            StudentData.StudentFileHandler studentHandler = new StudentData.StudentFileHandler();
-            string[] students = { "Ravi", "Anita", "Kiran" };
-
-            studentHandler.WriteStudents(students);
-            studentHandler.ReadStudents();
-
-            Console.ReadLine();
+            Console.WriteLine("\n---- Polymorphism (Overloading) ----");
+            PaymentOverload po = new PaymentOverload();
+            po.MakePayment(500);
+            po.MakePayment(1500, "Credit Card");
         }
     }
-
 }
-
