@@ -4,154 +4,193 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Exception_handling___Interface
+namespace Class_library_DLL___EXE
 {
-    internal static class Program
-    {using System;
+   
+    using System;
+using System.Collections.Generic;
 
 // 1
-class Vehicle
+namespace MathUtilities
     {
-        public string Brand;
-        public int Speed;
-
-       
-        public Vehicle()
+        public class Calculator
         {
-            Brand = "Unknown";
-            Speed = 0;
+            public int Add(int a, int b) => a + b;
+            public int Subtract(int a, int b) => a - b;
+            public int Multiply(int a, int b) => a * b;
+            public int Divide(int a, int b) => a / b;
         }
 
-        public Vehicle(string brand)
+        public class AdvancedMath
         {
-            Brand = brand;
-            Speed = 0;
-        }
+            public double Power(double a, double b) => Math.Pow(a, b);
+            public double SquareRoot(double a) => Math.Sqrt(a);
 
-        public Vehicle(string brand, int speed)
-        {
-            Brand = brand;
-            Speed = speed;
-        }
-
-        public void Start()
-        {
-            Console.WriteLine("Vehicle is starting...");
-        }
-
-        public void Display()
-        {
-            Console.WriteLine($"Brand: {Brand}, Speed: {Speed}");
+            public int Factorial(int n)
+            {
+                int fact = 1;
+                for (int i = 1; i <= n; i++)
+                    fact *= i;
+                return fact;
+            }
         }
     }
 
-    class Car : Vehicle
+    // 2
+    namespace StudentLibrary
     {
-        public int Doors;
-
-        public Car(string brand, int speed, int doors) : base(brand, speed)
+        public class Student
         {
-            Doors = doors;
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public int Marks { get; set; }
+
+            public string CalculateGrade()
+            {
+                if (Marks >= 80) return "A";
+                if (Marks >= 60) return "B";
+                if (Marks >= 40) return "C";
+                return "Fail";
+            }
         }
 
-        public void CarDetails()
+        public class StudentService
         {
-            Console.WriteLine($"Car Brand: {Brand}, Speed: {Speed}, Doors: {Doors}");
-        }
-    }
+            private List<Student> students = new List<Student>();
 
-    class Bike : Vehicle
-    {
-        public bool HasGear;
+            public void AddStudent(Student student)
+            {
+                students.Add(student);
+            }
 
-        public Bike(string brand, int speed, bool hasGear) : base(brand, speed)
-        {
-            HasGear = hasGear;
-        }
+            public double CalculateAverageMarks()
+            {
+                int total = 0;
+                foreach (var s in students)
+                    total += s.Marks;
 
-        public void BikeDetails()
-        {
-            Console.WriteLine($"Bike Brand: {Brand}, Speed: {Speed}, Has Gear: {HasGear}");
-        }
-    }
-
-    //2 
-    class Payment
-    {
-        public virtual void MakePayment()
-        {
-            Console.WriteLine("Processing payment...");
-        }
-    }
-
-    class CreditCard : Payment
-    {
-        public override void MakePayment()
-        {
-            Console.WriteLine("Payment made using Credit Card");
-        }
-    }
-
-    class NetBanking : Payment
-    {
-        public override void MakePayment()
-        {
-            Console.WriteLine("Payment made using Net Banking");
-        }
-    }
-
-    class UPI : Payment
-    {
-        public override void MakePayment()
-        {
-            Console.WriteLine("Payment made using UPI");
+                return students.Count == 0 ? 0 : (double)total / students.Count;
+            }
         }
     }
 
     // 3
-    class PaymentOverload
+  
+    namespace BankLibrary
     {
-        public void MakePayment(int amount)
+        public class Account
         {
-            Console.WriteLine("Paid ₹" + amount + " in cash");
+            public int AccountNumber { get; set; }
+            public double Balance { get; protected set; }
+
+            public void Deposit(double amount)
+            {
+                Balance += amount;
+            }
+
+            public void Withdraw(double amount)
+            {
+                if (amount <= Balance)
+                    Balance -= amount;
+                else
+                    Console.WriteLine("Insufficient Balance");
+            }
+
+            public double CheckBalance()
+            {
+                return Balance;
+            }
         }
 
-        public void MakePayment(int amount, string mode)
+        public class SavingsAccount : Account { }
+        public class CurrentAccount : Account { }
+    }
+
+    // 4. 
+ 
+    namespace LoggerLibrary
+    {
+        public class Logger
         {
-            Console.WriteLine("Paid ₹" + amount + " using " + mode);
+            public void LogInfo(string message)
+            {
+                Console.WriteLine("[INFO] " + message);
+            }
+
+            public void LogWarning(string message)
+            {
+                Console.WriteLine("[WARNING] " + message);
+            }
+
+            public void LogError(string message)
+            {
+                Console.WriteLine("[ERROR] " + message);
+            }
         }
     }
 
-    // 4
-    class Program
+    // 5.
+   
+    namespace PayrollLibrary
     {
-        static void Main()
+        public class Employee
         {
-            Console.WriteLine("---- Inheritance & Constructor Overloading ----");
-            Car car = new Car("Toyota", 180, 4);
-            car.Start();
-            car.CarDetails();
+            public int EmployeeId;
+            public string Name;
+            public double BasicSalary;
+        }
 
-            Bike bike = new Bike("Yamaha", 120, true);
-            bike.Start();
-            bike.BikeDetails();
+        public class PayrollCalculator
+        {
+            public double CalculateHRA(double basic) => basic * 0.20;
+            public double CalculateDA(double basic) => basic * 0.10;
+            public double CalculateTax(double basic) => basic * 0.05;
 
-            Console.WriteLine("\n---- Polymorphism (Overriding) ----");
-            Payment p;
+            public double CalculateNetSalary(double basic)
+            {
+                return basic + CalculateHRA(basic) + CalculateDA(basic) - CalculateTax(basic);
+            }
+        }
+    }
 
-            p = new CreditCard();
-            p.MakePayment();
+   
+  
+    {
+     
+        {
+            
+            var calc = new MathUtilities.Calculator();
+            Console.WriteLine("Add: " + calc.Add(10, 5));
 
-            p = new NetBanking();
-            p.MakePayment();
+            var adv = new MathUtilities.AdvancedMath();
+            Console.WriteLine("Factorial: " + adv.Factorial(5));
 
-            p = new UPI();
-            p.MakePayment();
+            
+            var service = new StudentLibrary.StudentService();
+            service.AddStudent(new StudentLibrary.Student { Id = 1, Name = "Ravi", Marks = 85 });
+            service.AddStudent(new StudentLibrary.Student { Id = 2, Name = "Anu", Marks = 70 });
+            Console.WriteLine("Average Marks: " + service.CalculateAverageMarks());
 
-            Console.WriteLine("\n---- Polymorphism (Overloading) ----");
-            PaymentOverload po = new PaymentOverload();
-            po.MakePayment(500);
-            po.MakePayment(1500, "Credit Card");
+           
+            var account = new BankLibrary.SavingsAccount();
+            account.Deposit(5000);
+            account.Withdraw(2000);
+            Console.WriteLine("Account Balance: " + account.CheckBalance());
+
+            
+            var logger = new LoggerLibrary.Logger();
+            logger.LogInfo("Transaction completed");
+
+           
+            var emp = new PayrollLibrary.Employee
+            {
+                EmployeeId = 101,
+                Name = "Kumar",
+                BasicSalary = 30000
+            };
+
+            var payroll = new PayrollLibrary.PayrollCalculator();
+            Console.WriteLine("Net Salary: " + payroll.CalculateNetSalary(emp.BasicSalary));
         }
     }
 }
